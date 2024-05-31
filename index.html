@@ -1,101 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Label</title>
-    <style>
-        .form-md {
-            width: 100%;
-            text-align: center;
-            margin: 32px auto 32px auto;
-        }
-
-        .form-md .form-group {
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 320px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-            position: relative;
-        }
-
-        input {
-            position: relative;
-            display: block;
-            width: 100%;
-            border: 1px solid rgba(0, 0, 0, .37);
-            border-radius: 4px;
-            background-color: transparent;
-            margin: 0px auto;
-            padding: 6px 4px 4px 14px;
-            height: 40px;
-            outline: none !important;
-            font-size: 16px;
-            color: rgba(0, 0, 0, 0.85);
-            transition: all .5s ease-in-out;
-        }
-
-        label {
-            position: absolute;
-            top: 20px;
-            left: 12px;
-            text-align: left;
-            display: inline-block;
-            padding: 0 4px;
-            height: 14px;
-            line-height: 14px;
-            font-size: 14px;
-            font-weight: 400;
-            background: #fff;
-            color: rgba(0, 0, 0, 0.5);
-            margin: 0px auto;
-            cursor: text;
-            transition: all .3s ease-in-out;
-        }
-
-        input:hover,
-        input:focus {
-            border: 1px solid #000;
-        }
-
-        input:valid+label,
-        input:focus+label {
-            top: -6px;
-            color: #000;
-            font-weight: bold;
-        }
-
-        .required-content {
-            background-color: inherit;
-            color: #e32b2b;
-            padding: 0;
-            padding-left: 3px;
-
-        }
-
-        .required-content:after {
-            content: "*";
-        }
-    </style>
+    <title>Trip sheet details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
-    <form class="form-md">
-        <div class="form-group">
-            <input id="form_name1" class="form-control" type="text" required>
-            <label for="form_name1">Name<span class="required-content"></span></label>
-        </div>
+    <!-- top navigation starts here -->
+   
+      <!-- top navigation ends here -->
 
-        <div class="form-group">
-            <input id="form_name2" class="form-control" type="text" placeholder="" required>
-            <label for="form_name2">Email<span class="required-content"></span></label>
-        </div>
-    </form>
-
+      <!-- body content starts here  -->
+       <div class="container-fluid md-spacing px-4">
+        <div style="width: 100%; border: 0.25px solid #e6e6e6; border-radius: 3px; margin-left: auto; margin-right: auto; max-width: 960px; box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;">
+            <div style="background-color:#ffffff; width: 100%;">
+            </div>
+        
+            <div style="display: flex; justify-content: center; background-color: #F6F6F6;">
+              <div
+                style="width: 100%; background-color: #ffffff; border-radius: 5px; padding: 10px 25px; margin: 35px 0px; font-family:''; margin-left: auto; margin-right: auto; max-width: 820px;">
+                <h3 style=" font-size: 20px; color: #013C79;">
+                  Hi ${newUser.userName},
+                </h3>
+                <p style=" font-size: 16px; color: #707D94;">
+                  Welcome to CloudGen!
+                </p style=" font-size: 16px; color: #707D94;">
+                <p style=" font-size: 16px; color: #707D94;">
+                  You are now part of the project: <span style="font-weight:bold; color: #013C79;">${req.body.ProjectName}</span>
+                </p>
+                <p style=" font-size: 16px; color: #707D94;">
+                  Please click the button below to accept the invitation
+                </p>
+                <div
+                  style="justify-content:center; display: flex; border-bottom:0.50px solid #c2c2c2; padding-bottom: 30px; padding-top: 40px;">
+                  <a href=${newUser.type != 'new' ? `${process.env.cloudgen_url}?${base64.encode('proMap')}=${random(15) + base64.encode(newUser.ProjectMapID)}` : `${process.env.cloudgen_url}/resetpass?${base64.encode('proMap')}=${random(15) + base64.encode(newUser.ProjectMapID)}&${base64.encode('userid')}=${random(15) + base64.encode(newUser.userID)}`} target="_blank">
+                  <button
+                    style=" padding:12px 40px; border-radius: 3px; background-color:#013C79; font-size: 13px; font-weight: bold; color: #ffffff; border: #013C79 1px solid; cursor: pointer;">Accept</button></a>
+                </div>
+                <p style=" font-size: 16px; color: #707D94;">
+                  You can ignore this mail if you didn't want to accept the invitation
+                </p>
+                <p style="margin-top: 30px; font-size: 16px; color: #707D94;">
+                  Team,
+                </p>
+                <p style=" font-size: 16px; font-weight:bold; color: #013C79;">
+                  CloudGen
+                </p>
+              </div>
+            </div>
+        
+          </div>
+       </div>
+      <!-- body content starts here  -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        </script>
 </body>
-
 </html>
